@@ -30997,7 +30997,8 @@ darkDropdownSystem.init();
 // Global variable for templates library
 let templatesLibrary = null;
 let floorsTemplatesLibrary = null;
-let currentTemplateCategory = 'cost'; // cost, revenue, operating_expenses, roles, floors
+let usesTemplatesLibrary = null;
+let currentTemplateCategory = 'cost'; // cost, revenue, operating_expenses, roles, floors, usages
 
 // Load templates library from JSON file
 async function loadTemplatesLibrary() {
@@ -31031,6 +31032,22 @@ async function loadFloorsTemplatesLibrary() {
     }
 }
 
+// Load uses templates library from JSON file
+async function loadUsesTemplatesLibrary() {
+    try {
+        const response = await fetch('/static/data/uses_templates_library.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        usesTemplatesLibrary = await response.json();
+        console.log('✅ Uses templates library loaded:', usesTemplatesLibrary.totalTemplates, 'templates');
+        return usesTemplatesLibrary;
+    } catch (error) {
+        console.error('❌ Failed to load uses templates library:', error);
+        return null;
+    }
+}
+
 // Show templates library modal
 async function showTemplatesLibrary() {
     // Load libraries if not loaded
@@ -31040,6 +31057,10 @@ async function showTemplatesLibrary() {
     
     if (!floorsTemplatesLibrary) {
         await loadFloorsTemplatesLibrary();
+    }
+    
+    if (!usesTemplatesLibrary) {
+        await loadUsesTemplatesLibrary();
     }
     
     if (!templatesLibrary) {
@@ -31056,6 +31077,17 @@ async function showTemplatesLibrary() {
             templates: floorsTemplatesLibrary.templates || []
         };
         console.log('✅ Floors templates integrated:', templatesLibrary.categories.floors.templates.length, 'templates');
+    }
+    
+    // Merge uses templates library into main library structure
+    if (usesTemplatesLibrary && !templatesLibrary.categories.usages) {
+        templatesLibrary.categories.usages = {
+            name: 'قوالب الاستخدامات',
+            nameEn: 'Usage Templates',
+            enabled: true,
+            templates: usesTemplatesLibrary.templates || []
+        };
+        console.log('✅ Uses templates integrated:', templatesLibrary.categories.usages.templates.length, 'templates');
     }
     
     // Merge user templates with library
@@ -31153,7 +31185,8 @@ function getCategoryIcon(category) {
         'revenue': 'fa-dollar-sign',
         'operating_expenses': 'fa-tools',
         'roles': 'fa-users',
-        'floors': 'fa-building'
+        'floors': 'fa-building',
+        'usages': 'fa-city'
     };
     return icons[category] || 'fa-layer-group';
 }
@@ -31328,6 +31361,19 @@ function renderTemplates(searchTerm = '', selectedTags = []) {
                                 <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px;">استخدام</div>
                             </div>
                         </div>
+                        ` : currentTemplateCategory === 'usages' ? `
+                        <!-- Usage Template Stats -->
+                        <div style="display: flex; gap: 16px; margin-bottom: 16px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px;">
+                            <div style="flex: 1; text-align: center;">
+                                <div style="font-size: 20px; font-weight: 600; color: #667eea;">${template.usageData && template.usageData.efficiency ? template.usageData.efficiency + '%' : '—'}</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px;">كفاءة</div>
+                            </div>
+                            <div style="width: 1px; background: rgba(255,255,255,0.1);"></div>
+                            <div style="flex: 1; text-align: center;">
+                                <div style="font-size: 20px; font-weight: 600; color: #764ba2;">${template.usageData && template.usageData.subUnits ? template.usageData.subUnits.length : 0}</div>
+                                <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px;">وحدة فرعية</div>
+                            </div>
+                        </div>
                         ` : `
                         <!-- Cost Template Stats -->
                         <div style="display: flex; gap: 16px; margin-bottom: 16px; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px;">
@@ -31428,13 +31474,18 @@ function importTemplateToProject(templateId) {
         return;
     }
     
-    // Confirm import
+    // Import based on category type
+    if (currentTemplateCategory === 'usages') {
+        importUsageTemplate(template);
+        return;
+    }
+    
+    // Confirm import for cost templates
     const confirmMsg = `هل تريد إضافة القالب "${template.name}" إلى مشروعك؟\n\nسيتم إضافة ${template.itemsCount} بند.`;
     if (!confirm(confirmMsg)) {
         return;
     }
     
-    // Import based on category type
     if (currentTemplateCategory === 'cost') {
         importCostTemplate(template);
     } else if (currentTemplateCategory === 'revenue') {
@@ -33539,6 +33590,87 @@ window.previewTemplate = function(templateId) {
         alert('❌ وظيفة المعاينة غير متوفرة');
     }
 };
+
+// Import a usage template into the project's usesData
+function importUsageTemplate(template) {
+    if (!template || !template.usageData) {
+        alert('❌ بيانات القالب غير مكتملة');
+        return;
+    }
+    
+    const usageData = template.usageData;
+    
+    // Generate unique ID
+    const newId = `custom_${Date.now()}`;
+    
+    // Build the new use object
+    const newUse = {
+        id: newId,
+        name: usageData.name || template.name,
+        nameEn: usageData.nameEn || template.nameEn || '',
+        color: usageData.color || 'blue',
+        icon: usageData.icon || '🏗️',
+        share: 0,
+        efficiency: usageData.efficiency || 80,
+        totalGFA: 0,
+        totalGLA: 0,
+        totalUnits: 0,
+        isCustom: true,
+        expanded: true,
+        countInGLA: usageData.countInGLA !== undefined ? usageData.countInGLA : true,
+        revenueSettings: usageData.revenueSettings ? { ...usageData.revenueSettings } : {
+            rentalEnabled: true,
+            salesEnabled: true,
+            rentalLabel: 'إيجار',
+            salesLabel: 'بيع'
+        },
+        subUnits: (usageData.subUnits || []).map((sub, index) => ({
+            id: `${newId}_${index + 1}`,
+            name: sub.name,
+            percentage: sub.percentage,
+            efficiency: sub.efficiency,
+            areaPerUnit: sub.areaPerUnit,
+            units: 0
+        }))
+    };
+    
+    // Add to usesData
+    window.usesData[newId] = newUse;
+    
+    // Save to localStorage
+    try {
+        localStorage.setItem('usesData', JSON.stringify(window.usesData));
+    } catch(e) {
+        console.warn('Could not save usesData to localStorage', e);
+    }
+    
+    // Close modal
+    document.querySelector('.modal-overlay')?.remove();
+    
+    // Re-render uses system
+    if (typeof renderUsesSystem === 'function') {
+        renderUsesSystem();
+    }
+    if (typeof updateAllUseTypeDropdowns === 'function') {
+        updateAllUseTypeDropdowns();
+    }
+    if (typeof syncParkingWithUses === 'function') {
+        syncParkingWithUses();
+    }
+    if (typeof window.updateFloorsDisplay === 'function') {
+        window.updateFloorsDisplay();
+    }
+    
+    const subCount = newUse.subUnits.length;
+    const subText = subCount > 0 ? `\n${subCount} وحدة فرعية` : '';
+    if (typeof showNotification === 'function') {
+        showNotification(`✅ تم إضافة "${template.name}" إلى الاستخدامات${subText}`, 'success', 3000);
+    } else {
+        alert(`✅ تم إضافة "${template.name}" إلى الاستخدامات بنجاح!${subText}`);
+    }
+    
+    console.log(`✅ Usage template imported: ${template.name} → ${newId}`);
+}
 
 // Override importTemplateToProject to handle floors templates
 const originalImportTemplateToProject = window.importTemplateToProject;

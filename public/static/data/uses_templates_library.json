@@ -1,0 +1,1507 @@
+{
+  "version": "1.0.0",
+  "createdAt": "2026-06-30T10:42:46.052075",
+  "totalTemplates": 34,
+  "categories": {
+    "سكني": "🏠",
+    "تجاري": "🛒",
+    "مكاتب": "🏢",
+    "فندقي": "🏨",
+    "شقق فندقية": "🏩",
+    "طبي": "🏥",
+    "تعليمي": "🎓",
+    "مستودعات": "🏭",
+    "مواقف": "🅿️",
+    "خدمات": "🌐"
+  },
+  "templates": [
+    {
+      "id": "use_residential_studio_1br",
+      "name": "سكني - استوديو ومفرد",
+      "nameEn": "Residential - Studio & 1BR",
+      "description": "مناسب للسكن الطلابي والعزاب، يشيع قرب الجامعات ومناطق الأعمال",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "استوديو",
+        "مفرد",
+        "اقتصادي",
+        "شباب"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 82,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "استوديو",
+            "percentage": 35,
+            "efficiency": 80,
+            "areaPerUnit": 45
+          },
+          {
+            "name": "شقة غرفة نوم واحدة",
+            "percentage": 65,
+            "efficiency": 83,
+            "areaPerUnit": 65
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_1br_2br",
+      "name": "سكني - شقق اقتصادية",
+      "nameEn": "Residential - Economic Apartments",
+      "description": "شقق اقتصادية بغرفتين وثلاث غرف، الأكثر طلباً في السوق السعودية للإيجار",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "اقتصادي",
+        "إيجار",
+        "عمارة"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 80,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 1 غرفة نوم",
+            "percentage": 40,
+            "efficiency": 80,
+            "areaPerUnit": 65
+          },
+          {
+            "name": "شقة 2 غرف نوم",
+            "percentage": 60,
+            "efficiency": 82,
+            "areaPerUnit": 95
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_2br_3br",
+      "name": "سكني - عمارة متوسطة",
+      "nameEn": "Residential - Standard Apartment Building",
+      "description": "النموذج الأكثر شيوعاً في المملكة، مناسب للعائلات الصغيرة والمتوسطة",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "متوسط",
+        "عائلي",
+        "عمارة"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 82,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 2 غرف نوم",
+            "percentage": 40,
+            "efficiency": 82,
+            "areaPerUnit": 95
+          },
+          {
+            "name": "شقة 3 غرف نوم",
+            "percentage": 60,
+            "efficiency": 84,
+            "areaPerUnit": 135
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_3types_medium",
+      "name": "سكني - ثلاثة أنواع (متوسط)",
+      "nameEn": "Residential - Three Types (Medium)",
+      "description": "توزيع متوازن لثلاثة أنواع شقق، مستخرج من مشاريع فعلية بالدائري الثالث بالرياض",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "متوسط",
+        "متنوع",
+        "رياض"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 73,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة غرفة نوم واحدة",
+            "percentage": 40,
+            "efficiency": 80,
+            "areaPerUnit": 65
+          },
+          {
+            "name": "شقة 2 غرف نوم",
+            "percentage": 51,
+            "efficiency": 83,
+            "areaPerUnit": 108
+          },
+          {
+            "name": "شقة 3 غرف نوم",
+            "percentage": 9,
+            "efficiency": 85,
+            "areaPerUnit": 153
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_3br_only",
+      "name": "سكني - شقق 3 غرف",
+      "nameEn": "Residential - 3BR Only",
+      "description": "نموذج مبسط بغرفة واحدة من النوع (3 غرف)، مناسب للسيناريوهات الاقتصادية السريعة",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "3 غرف",
+        "بسيط",
+        "اقتصادي"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 75,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 3 غرف نوم",
+            "percentage": 100,
+            "efficiency": 75,
+            "areaPerUnit": 134
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_large_family",
+      "name": "سكني - شقق كبيرة (4+ غرف)",
+      "nameEn": "Residential - Large Family Apartments",
+      "description": "شقق للعائلات الكبيرة، مناسب لأحياء الرقي والحمراء وما شابهها",
+      "icon": "🏠",
+      "color": "orange",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "عائلي كبير",
+        "4 غرف",
+        "5 غرف"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "orange",
+        "icon": "🏠",
+        "efficiency": 84,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 4 غرف نوم",
+            "percentage": 60,
+            "efficiency": 84,
+            "areaPerUnit": 185
+          },
+          {
+            "name": "شقة 5 غرف نوم",
+            "percentage": 40,
+            "efficiency": 86,
+            "areaPerUnit": 240
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_luxury",
+      "name": "سكني - فاخر",
+      "nameEn": "Residential - Luxury",
+      "description": "شقق فاخرة بمواصفات عالية، مستخرج من مشاريع الفيحاء والعزيزية",
+      "icon": "🏡",
+      "color": "yellow",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "فاخر",
+        "6 غرف",
+        "بنتهاوس"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "yellow",
+        "icon": "🏡",
+        "efficiency": 87,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 4 غرف نوم",
+            "percentage": 35,
+            "efficiency": 86,
+            "areaPerUnit": 190
+          },
+          {
+            "name": "شقة 5-6 غرف نوم",
+            "percentage": 55,
+            "efficiency": 88,
+            "areaPerUnit": 270
+          },
+          {
+            "name": "بنتهاوس",
+            "percentage": 10,
+            "efficiency": 90,
+            "areaPerUnit": 450
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_residential_villas",
+      "name": "سكني - فيلات مجمع",
+      "nameEn": "Residential - Villa Compound",
+      "description": "فيلات ضمن مجمع سكني متكامل، شائع في ضواحي الرياض وجدة والمدن الكبرى",
+      "icon": "🏡",
+      "color": "green",
+      "category": "سكني",
+      "tags": [
+        "سكني",
+        "فيلا",
+        "مجمع",
+        "ضواحي"
+      ],
+      "usageData": {
+        "name": "سكني",
+        "nameEn": "Residential",
+        "color": "green",
+        "icon": "🏡",
+        "efficiency": 65,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "فيلا 4 غرف نوم",
+            "percentage": 50,
+            "efficiency": 65,
+            "areaPerUnit": 380
+          },
+          {
+            "name": "فيلا 5 غرف نوم",
+            "percentage": 35,
+            "efficiency": 67,
+            "areaPerUnit": 480
+          },
+          {
+            "name": "فيلا 6 غرف نوم (مجلس)",
+            "percentage": 15,
+            "efficiency": 70,
+            "areaPerUnit": 600
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_small",
+      "name": "تجاري - محلات صغيرة",
+      "nameEn": "Retail - Small Shops",
+      "description": "محلات صغيرة مناسبة للخدمات اليومية والبيع بالتجزئة في الأحياء السكنية",
+      "icon": "🛒",
+      "color": "blue",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "محلات",
+        "صغير",
+        "خدمات",
+        "أحياء"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "blue",
+        "icon": "🛒",
+        "efficiency": 75,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "محل صغير",
+            "percentage": 100,
+            "efficiency": 75,
+            "areaPerUnit": 45
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_medium",
+      "name": "تجاري - محلات متوسطة",
+      "nameEn": "Retail - Medium Shops",
+      "description": "محلات متوسطة للبيع بالتجزئة، النموذج الأكثر شيوعاً في الشوارع التجارية السعودية",
+      "icon": "🛒",
+      "color": "blue",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "محلات",
+        "متوسط",
+        "شارع تجاري"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "blue",
+        "icon": "🛒",
+        "efficiency": 75,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "محل متوسط",
+            "percentage": 100,
+            "efficiency": 75,
+            "areaPerUnit": 120
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_large",
+      "name": "تجاري - محلات كبيرة",
+      "nameEn": "Retail - Large Stores",
+      "description": "محلات كبيرة تناسب العلامات التجارية الكبرى والمطاعم الرئيسية",
+      "icon": "🛒",
+      "color": "blue",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "كبير",
+        "علامات تجارية",
+        "مطاعم"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "blue",
+        "icon": "🛒",
+        "efficiency": 78,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "محل كبير",
+            "percentage": 100,
+            "efficiency": 78,
+            "areaPerUnit": 250
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_mixed_street",
+      "name": "تجاري - شارع تجاري متنوع",
+      "nameEn": "Retail - Mixed Commercial Street",
+      "description": "مزيج من المحلات الصغيرة والمتوسطة، مستخرج من مشاريع فعلية بالرياض وجدة",
+      "icon": "🛒",
+      "color": "blue",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "متنوع",
+        "شارع تجاري",
+        "مزيج"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "blue",
+        "icon": "🛒",
+        "efficiency": 76,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "محل كبير",
+            "percentage": 35,
+            "efficiency": 78,
+            "areaPerUnit": 250
+          },
+          {
+            "name": "محل متوسط",
+            "percentage": 65,
+            "efficiency": 75,
+            "areaPerUnit": 120
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_mall",
+      "name": "تجاري - مول تجاري",
+      "nameEn": "Retail - Shopping Mall",
+      "description": "مزيج متكامل لمركز تجاري من أكشاك ومحلات صغيرة ومتوسطة وكبيرة ومراسي",
+      "icon": "🏬",
+      "color": "cyan",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "مول",
+        "مركز تجاري",
+        "متكامل"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "cyan",
+        "icon": "🏬",
+        "efficiency": 68,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "أكشاك",
+            "percentage": 10,
+            "efficiency": 60,
+            "areaPerUnit": 15
+          },
+          {
+            "name": "محلات صغيرة",
+            "percentage": 30,
+            "efficiency": 70,
+            "areaPerUnit": 45
+          },
+          {
+            "name": "محلات متوسطة",
+            "percentage": 40,
+            "efficiency": 75,
+            "areaPerUnit": 120
+          },
+          {
+            "name": "محلات كبيرة (مراسي)",
+            "percentage": 20,
+            "efficiency": 80,
+            "areaPerUnit": 600
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_retail_fnb",
+      "name": "تجاري - مطاعم ومقاهي",
+      "nameEn": "Retail - Food & Beverage",
+      "description": "مطاعم ومقاهي بكفاءات أقل بسبب المطابخ والمستودعات، مناسب للطوابق الأرضية والأولى",
+      "icon": "🍽️",
+      "color": "red",
+      "category": "تجاري",
+      "tags": [
+        "تجاري",
+        "مطاعم",
+        "مقاهي",
+        "F&B",
+        "أغذية"
+      ],
+      "usageData": {
+        "name": "تجاري",
+        "nameEn": "Retail",
+        "color": "red",
+        "icon": "🍽️",
+        "efficiency": 60,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "مقهى صغير",
+            "percentage": 25,
+            "efficiency": 55,
+            "areaPerUnit": 80
+          },
+          {
+            "name": "مطعم متوسط",
+            "percentage": 50,
+            "efficiency": 60,
+            "areaPerUnit": 180
+          },
+          {
+            "name": "مطعم كبير",
+            "percentage": 25,
+            "efficiency": 65,
+            "areaPerUnit": 350
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_office_small",
+      "name": "مكاتب - وحدات صغيرة",
+      "nameEn": "Offices - Small Units",
+      "description": "مكاتب صغيرة مناسبة للشركات الناشئة والمهنيين المستقلين",
+      "icon": "🏢",
+      "color": "green",
+      "category": "مكاتب",
+      "tags": [
+        "مكاتب",
+        "صغير",
+        "شركات ناشئة",
+        "إداري"
+      ],
+      "usageData": {
+        "name": "مكتبي",
+        "nameEn": "Office",
+        "color": "green",
+        "icon": "🏢",
+        "efficiency": 78,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "مكتب صغير",
+            "percentage": 100,
+            "efficiency": 78,
+            "areaPerUnit": 55
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_office_medium",
+      "name": "مكاتب - وحدات متوسطة",
+      "nameEn": "Offices - Medium Units",
+      "description": "مكاتب متوسطة للشركات المتوسطة الحجم، مستخرج من مشاريع فعلية بالرياض",
+      "icon": "🏢",
+      "color": "green",
+      "category": "مكاتب",
+      "tags": [
+        "مكاتب",
+        "متوسط",
+        "شركات",
+        "إداري",
+        "رياض"
+      ],
+      "usageData": {
+        "name": "مكتبي",
+        "nameEn": "Office",
+        "color": "green",
+        "icon": "🏢",
+        "efficiency": 75,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "وحدة مكتبية",
+            "percentage": 100,
+            "efficiency": 75,
+            "areaPerUnit": 148
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_office_large",
+      "name": "مكاتب - وحدات كبيرة",
+      "nameEn": "Offices - Large Units",
+      "description": "مكاتب كبيرة لإدارات الشركات الكبرى والجهات الحكومية",
+      "icon": "🏢",
+      "color": "green",
+      "category": "مكاتب",
+      "tags": [
+        "مكاتب",
+        "كبير",
+        "شركات كبرى",
+        "حكومي"
+      ],
+      "usageData": {
+        "name": "مكتبي",
+        "nameEn": "Office",
+        "color": "green",
+        "icon": "🏢",
+        "efficiency": 78,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "وحدة مكتبية كبيرة",
+            "percentage": 100,
+            "efficiency": 78,
+            "areaPerUnit": 250
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_office_mixed",
+      "name": "مكاتب - متنوعة الأحجام",
+      "nameEn": "Offices - Mixed Sizes",
+      "description": "مزيج من المكاتب الصغيرة والمتوسطة والكبيرة، مستخرج من مشاريع فعلية",
+      "icon": "🏢",
+      "color": "teal",
+      "category": "مكاتب",
+      "tags": [
+        "مكاتب",
+        "متنوع",
+        "مزيج",
+        "برج إداري"
+      ],
+      "usageData": {
+        "name": "مكاتب",
+        "nameEn": "Offices",
+        "color": "teal",
+        "icon": "🏢",
+        "efficiency": 80,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "مكتب صغير",
+            "percentage": 15,
+            "efficiency": 75,
+            "areaPerUnit": 63
+          },
+          {
+            "name": "مكتب متوسط",
+            "percentage": 85,
+            "efficiency": 82,
+            "areaPerUnit": 120
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_office_executive",
+      "name": "مكاتب - أجنحة إدارية فاخرة",
+      "nameEn": "Offices - Executive Suites",
+      "description": "أجنحة إدارية فاخرة لمقار الشركات الكبرى، مناسب لأبراج الأعمال في الرياض وجدة",
+      "icon": "🏛️",
+      "color": "indigo",
+      "category": "مكاتب",
+      "tags": [
+        "مكاتب",
+        "فاخر",
+        "إداري",
+        "أجنحة",
+        "برج أعمال"
+      ],
+      "usageData": {
+        "name": "مكتبي",
+        "nameEn": "Office",
+        "color": "indigo",
+        "icon": "🏛️",
+        "efficiency": 82,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "جناح إداري متوسط",
+            "percentage": 60,
+            "efficiency": 82,
+            "areaPerUnit": 320
+          },
+          {
+            "name": "جناح إداري كبير",
+            "percentage": 30,
+            "efficiency": 85,
+            "areaPerUnit": 550
+          },
+          {
+            "name": "جناح رئيسي",
+            "percentage": 10,
+            "efficiency": 88,
+            "areaPerUnit": 900
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_hotel_budget",
+      "name": "فندق - اقتصادي (3 نجوم)",
+      "nameEn": "Hotel - Budget (3-Star)",
+      "description": "فندق اقتصادي بغرف قياسية، مناسب للمدن الدينية والمناطق السياحية الداخلية",
+      "icon": "🏨",
+      "color": "purple",
+      "category": "فندقي",
+      "tags": [
+        "فندقي",
+        "3 نجوم",
+        "اقتصادي",
+        "سياحي",
+        "مكة",
+        "المدينة"
+      ],
+      "usageData": {
+        "name": "فندقي",
+        "nameEn": "Hotel",
+        "color": "purple",
+        "icon": "🏨",
+        "efficiency": 65,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيراد يومي (ADR)",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "غرفة قياسية",
+            "percentage": 85,
+            "efficiency": 65,
+            "areaPerUnit": 28
+          },
+          {
+            "name": "جناح صغير",
+            "percentage": 15,
+            "efficiency": 68,
+            "areaPerUnit": 45
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_hotel_business",
+      "name": "فندق - أعمال (4 نجوم)",
+      "nameEn": "Hotel - Business (4-Star)",
+      "description": "فندق أعمال بمواصفات 4 نجوم، مناسب للمدن الاقتصادية والمراكز التجارية",
+      "icon": "🏨",
+      "color": "purple",
+      "category": "فندقي",
+      "tags": [
+        "فندقي",
+        "4 نجوم",
+        "أعمال",
+        "مؤتمرات"
+      ],
+      "usageData": {
+        "name": "فندقي",
+        "nameEn": "Hotel",
+        "color": "purple",
+        "icon": "🏨",
+        "efficiency": 68,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيراد يومي (ADR)",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "غرفة قياسية",
+            "percentage": 60,
+            "efficiency": 67,
+            "areaPerUnit": 32
+          },
+          {
+            "name": "غرفة أعمال",
+            "percentage": 30,
+            "efficiency": 70,
+            "areaPerUnit": 42
+          },
+          {
+            "name": "جناح تنفيذي",
+            "percentage": 10,
+            "efficiency": 73,
+            "areaPerUnit": 70
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_hotel_luxury",
+      "name": "فندق - فاخر (5 نجوم)",
+      "nameEn": "Hotel - Luxury (5-Star)",
+      "description": "فندق فاخر 5 نجوم بمعايير عالمية، مستخرج من مشاريع فعلية",
+      "icon": "🏨",
+      "color": "amber",
+      "category": "فندقي",
+      "tags": [
+        "فندقي",
+        "5 نجوم",
+        "فاخر",
+        "عالمي"
+      ],
+      "usageData": {
+        "name": "فندقي",
+        "nameEn": "Hotel",
+        "color": "amber",
+        "icon": "🏨",
+        "efficiency": 73,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيراد يومي (ADR)",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "غرفة قياسية",
+            "percentage": 50,
+            "efficiency": 70,
+            "areaPerUnit": 31
+          },
+          {
+            "name": "غرفة عادية",
+            "percentage": 40,
+            "efficiency": 73,
+            "areaPerUnit": 40
+          },
+          {
+            "name": "جناح",
+            "percentage": 10,
+            "efficiency": 76,
+            "areaPerUnit": 85
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_hotel_boutique",
+      "name": "فندق - بوتيك فاخر",
+      "nameEn": "Hotel - Luxury Boutique",
+      "description": "فندق بوتيك صغير بغرف واسعة وتصميم مميز، مناسب للمواقع التراثية والمناطق السياحية",
+      "icon": "🏩",
+      "color": "pink",
+      "category": "فندقي",
+      "tags": [
+        "فندقي",
+        "بوتيك",
+        "فاخر",
+        "تراث",
+        "سياحي"
+      ],
+      "usageData": {
+        "name": "فندقي",
+        "nameEn": "Hotel",
+        "color": "pink",
+        "icon": "🏩",
+        "efficiency": 70,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيراد يومي (ADR)",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "غرفة ديلوكس",
+            "percentage": 50,
+            "efficiency": 68,
+            "areaPerUnit": 55
+          },
+          {
+            "name": "جناح ديلوكس",
+            "percentage": 35,
+            "efficiency": 72,
+            "areaPerUnit": 90
+          },
+          {
+            "name": "جناح رئاسي",
+            "percentage": 15,
+            "efficiency": 75,
+            "areaPerUnit": 160
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_serviced_apt_economic",
+      "name": "شقق فندقية - اقتصادية",
+      "nameEn": "Serviced Apartments - Economic",
+      "description": "شقق مفروشة اقتصادية للإقامة طويلة الأمد، شائعة في الرياض وجدة للعمالة الوافدة",
+      "icon": "🏩",
+      "color": "violet",
+      "category": "شقق فندقية",
+      "tags": [
+        "شقق فندقية",
+        "سكن مفروش",
+        "اقتصادي",
+        "إقامة طويلة"
+      ],
+      "usageData": {
+        "name": "شقق فندقية",
+        "nameEn": "Serviced Apartments",
+        "color": "violet",
+        "icon": "🏩",
+        "efficiency": 80,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "استوديو مفروش",
+            "percentage": 40,
+            "efficiency": 78,
+            "areaPerUnit": 50
+          },
+          {
+            "name": "شقة غرفة نوم مفروشة",
+            "percentage": 60,
+            "efficiency": 82,
+            "areaPerUnit": 75
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_serviced_apt_family",
+      "name": "شقق فندقية - عائلية",
+      "nameEn": "Serviced Apartments - Family",
+      "description": "شقق مفروشة عائلية، رائجة في مكة والمدينة وللعائلات الزائرة والمغتربين",
+      "icon": "🏩",
+      "color": "violet",
+      "category": "شقق فندقية",
+      "tags": [
+        "شقق فندقية",
+        "سكن مفروش",
+        "عائلي",
+        "مكة",
+        "المدينة"
+      ],
+      "usageData": {
+        "name": "شقق فندقية",
+        "nameEn": "Serviced Apartments",
+        "color": "violet",
+        "icon": "🏩",
+        "efficiency": 82,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة غرفة نوم",
+            "percentage": 30,
+            "efficiency": 80,
+            "areaPerUnit": 70
+          },
+          {
+            "name": "شقة 2 غرف نوم",
+            "percentage": 45,
+            "efficiency": 83,
+            "areaPerUnit": 110
+          },
+          {
+            "name": "شقة 3 غرف نوم",
+            "percentage": 25,
+            "efficiency": 85,
+            "areaPerUnit": 155
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_serviced_apt_luxury",
+      "name": "شقق فندقية - فاخرة",
+      "nameEn": "Serviced Apartments - Luxury",
+      "description": "شقق فندقية فاخرة بمواصفات عالية، مناسب للمناطق الراقية في الرياض وجدة",
+      "icon": "🏩",
+      "color": "amber",
+      "category": "شقق فندقية",
+      "tags": [
+        "شقق فندقية",
+        "فاخر",
+        "VIP",
+        "راقي"
+      ],
+      "usageData": {
+        "name": "شقق فندقية",
+        "nameEn": "Serviced Apartments",
+        "color": "amber",
+        "icon": "🏩",
+        "efficiency": 84,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": true,
+          "rentalLabel": "إيجار شهري",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "شقة 2 غرف نوم فاخرة",
+            "percentage": 50,
+            "efficiency": 83,
+            "areaPerUnit": 150
+          },
+          {
+            "name": "شقة 3 غرف نوم فاخرة",
+            "percentage": 40,
+            "efficiency": 86,
+            "areaPerUnit": 220
+          },
+          {
+            "name": "بنتهاوس مفروش",
+            "percentage": 10,
+            "efficiency": 88,
+            "areaPerUnit": 400
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_medical_clinics",
+      "name": "طبي - عيادات تخصصية",
+      "nameEn": "Medical - Specialist Clinics",
+      "description": "عيادات طبية متخصصة ومراكز صحية، قطاع سريع النمو في المملكة مع رؤية 2030",
+      "icon": "🏥",
+      "color": "rose",
+      "category": "طبي",
+      "tags": [
+        "طبي",
+        "عيادات",
+        "صحي",
+        "رؤية 2030"
+      ],
+      "usageData": {
+        "name": "طبي",
+        "nameEn": "Medical",
+        "color": "rose",
+        "icon": "🏥",
+        "efficiency": 70,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "عيادة صغيرة",
+            "percentage": 50,
+            "efficiency": 68,
+            "areaPerUnit": 55
+          },
+          {
+            "name": "عيادة متوسطة",
+            "percentage": 35,
+            "efficiency": 70,
+            "areaPerUnit": 95
+          },
+          {
+            "name": "جناح طبي كبير",
+            "percentage": 15,
+            "efficiency": 72,
+            "areaPerUnit": 180
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_medical_hospital",
+      "name": "طبي - مستشفى خاص",
+      "nameEn": "Medical - Private Hospital",
+      "description": "مستشفى خاص بغرف مرضى وغرف عمليات ووحدات عناية، كفاءة أقل بسبب المتطلبات التقنية",
+      "icon": "🏥",
+      "color": "red",
+      "category": "طبي",
+      "tags": [
+        "طبي",
+        "مستشفى",
+        "خاص",
+        "عمليات",
+        "عناية"
+      ],
+      "usageData": {
+        "name": "طبي",
+        "nameEn": "Medical",
+        "color": "red",
+        "icon": "🏥",
+        "efficiency": 55,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "غرفة مريض مفردة",
+            "percentage": 55,
+            "efficiency": 55,
+            "areaPerUnit": 30
+          },
+          {
+            "name": "جناح VIP",
+            "percentage": 25,
+            "efficiency": 58,
+            "areaPerUnit": 55
+          },
+          {
+            "name": "جناح تمريض مشترك",
+            "percentage": 20,
+            "efficiency": 50,
+            "areaPerUnit": 20
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_educational_training",
+      "name": "تعليمي - مركز تدريب",
+      "nameEn": "Educational - Training Center",
+      "description": "مراكز تدريب ومعاهد تعليمية، قطاع نامٍ في ظل رؤية 2030 وبرامج التوطين",
+      "icon": "🎓",
+      "color": "sky",
+      "category": "تعليمي",
+      "tags": [
+        "تعليمي",
+        "تدريب",
+        "معهد",
+        "رؤية 2030"
+      ],
+      "usageData": {
+        "name": "تعليمي",
+        "nameEn": "Educational",
+        "color": "sky",
+        "icon": "🎓",
+        "efficiency": 65,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "قاعة تدريب صغيرة",
+            "percentage": 40,
+            "efficiency": 65,
+            "areaPerUnit": 60
+          },
+          {
+            "name": "قاعة تدريب متوسطة",
+            "percentage": 40,
+            "efficiency": 65,
+            "areaPerUnit": 120
+          },
+          {
+            "name": "قاعة مؤتمرات",
+            "percentage": 20,
+            "efficiency": 70,
+            "areaPerUnit": 250
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_educational_school",
+      "name": "تعليمي - مدرسة أهلية",
+      "nameEn": "Educational - Private School",
+      "description": "مدارس أهلية، كفاءة منخفضة بسبب المساحات الخارجية وملاعب الرياضة والمصليات",
+      "icon": "🏫",
+      "color": "sky",
+      "category": "تعليمي",
+      "tags": [
+        "تعليمي",
+        "مدرسة",
+        "أهلي",
+        "فصول"
+      ],
+      "usageData": {
+        "name": "تعليمي",
+        "nameEn": "Educational",
+        "color": "sky",
+        "icon": "🏫",
+        "efficiency": 55,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "فصل دراسي",
+            "percentage": 70,
+            "efficiency": 55,
+            "areaPerUnit": 65
+          },
+          {
+            "name": "مختبر / قاعة نشاط",
+            "percentage": 30,
+            "efficiency": 60,
+            "areaPerUnit": 90
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_warehouse_medium",
+      "name": "مستودعات - متوسطة",
+      "nameEn": "Warehousing - Medium",
+      "description": "مستودعات متوسطة للتخزين والتوزيع، مناسب للمناطق الصناعية ومراكز التوزيع",
+      "icon": "🏭",
+      "color": "slate",
+      "category": "مستودعات",
+      "tags": [
+        "مستودعات",
+        "تخزين",
+        "لوجستي",
+        "صناعي"
+      ],
+      "usageData": {
+        "name": "مستودعات",
+        "nameEn": "Warehousing",
+        "color": "slate",
+        "icon": "🏭",
+        "efficiency": 85,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "مستودع متوسط",
+            "percentage": 100,
+            "efficiency": 85,
+            "areaPerUnit": 500
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_warehouse_mixed",
+      "name": "مستودعات - مزيج مكاتب ومخازن",
+      "nameEn": "Warehousing - Mixed Office & Storage",
+      "description": "مجمع خدمي يجمع مستودعات مع مكاتب أمامية، النموذج الأكثر طلباً في المناطق الصناعية السعودية",
+      "icon": "🏭",
+      "color": "zinc",
+      "category": "مستودعات",
+      "tags": [
+        "مستودعات",
+        "مكاتب أمامية",
+        "خدمي",
+        "صناعي"
+      ],
+      "usageData": {
+        "name": "مستودعات",
+        "nameEn": "Warehousing",
+        "color": "zinc",
+        "icon": "🏭",
+        "efficiency": 80,
+        "countInGLA": true,
+        "revenueSettings": {
+          "rentalEnabled": true,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار سنوي",
+          "salesLabel": "بيع"
+        },
+        "subUnits": [
+          {
+            "name": "مستودع / مخزن",
+            "percentage": 75,
+            "efficiency": 88,
+            "areaPerUnit": 600
+          },
+          {
+            "name": "مكتب أمامي",
+            "percentage": 25,
+            "efficiency": 75,
+            "areaPerUnit": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "use_parking",
+      "name": "مواقف سيارات",
+      "nameEn": "Parking",
+      "description": "مواقف سيارات (أرضية أو قبو أو هيكل)، كفاءة عالية تصل 85%",
+      "icon": "🅿️",
+      "color": "gray",
+      "category": "مواقف",
+      "tags": [
+        "مواقف",
+        "سيارات",
+        "قبو",
+        "هيكل"
+      ],
+      "usageData": {
+        "name": "مواقف",
+        "nameEn": "Parking",
+        "color": "gray",
+        "icon": "🅿️",
+        "efficiency": 85,
+        "countInGLA": false,
+        "revenueSettings": {
+          "rentalEnabled": false,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار",
+          "salesLabel": "بيع"
+        },
+        "subUnits": []
+      }
+    },
+    {
+      "id": "use_common_services",
+      "name": "خدمات مشتركة",
+      "nameEn": "Common Services",
+      "description": "المساحات المشتركة كالمداخل والممرات والمصليات والمرافق العامة، لا تُحتسب ضمن GLA",
+      "icon": "🌐",
+      "color": "slate",
+      "category": "خدمات",
+      "tags": [
+        "خدمات مشتركة",
+        "مداخل",
+        "ممرات",
+        "مرافق"
+      ],
+      "usageData": {
+        "name": "الخدمات المشتركة",
+        "nameEn": "Common Services",
+        "color": "slate",
+        "icon": "🌐",
+        "efficiency": 100,
+        "countInGLA": false,
+        "revenueSettings": {
+          "rentalEnabled": false,
+          "salesEnabled": false,
+          "rentalLabel": "إيجار",
+          "salesLabel": "بيع"
+        },
+        "subUnits": []
+      }
+    }
+  ]
+}
