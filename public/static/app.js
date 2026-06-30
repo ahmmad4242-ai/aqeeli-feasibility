@@ -32037,6 +32037,16 @@ function editTemplateContent(templateId) {
         return;
     }
     
+    // Usage templates don't use categoryData — skip content editing
+    if (template.usageData) {
+        if (typeof showNotification === 'function') {
+            showNotification('لتعديل القالب، أضفه إلى المشروع أولاً ثم عدّله مباشرة', 'info', 3000);
+        } else {
+            alert('💡 لتعديل قالب الاستخدام: أضفه إلى المشروع أولاً، ثم عدّله مباشرة من قسم الاستخدامات.');
+        }
+        return;
+    }
+    
     // Convert default template to user template if needed
     if (!template.isUserTemplate) {
         template.isUserTemplate = true;
