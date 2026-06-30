@@ -7646,13 +7646,6 @@
       "icon": "🔧",
       "enabled": false,
       "templates": []
-    },
-    "roles": {
-      "name": "قوالب الأدوار",
-      "nameEn": "Roles Templates",
-      "icon": "👥",
-      "enabled": false,
-      "templates": []
     }
   }
 }
