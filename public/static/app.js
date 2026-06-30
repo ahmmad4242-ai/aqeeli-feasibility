@@ -31545,6 +31545,12 @@ function previewTemplate(templateId) {
         return;
     }
     
+    // Usage templates: show custom preview with subUnits
+    if (template.usageData) {
+        previewUsageTemplate(template);
+        return;
+    }
+    
     // Create preview modal
     const previewModal = document.createElement('div');
     previewModal.className = 'modal-overlay';
@@ -32773,6 +32779,19 @@ function exportTemplateAsJSON(templateId) {
         return;
     }
     
+    // Usage templates: export usageData directly
+    if (template.usageData) {
+        const exportData = { metadata: { exportDate: new Date().toISOString(), version: '1.0.0', templateName: template.name, category: template.category }, usageData: template.usageData };
+        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `usage_template_${template.id}.json`;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+    }
+    
     // Create export data
     const exportData = {
         metadata: template.metadata || {
@@ -32976,6 +32995,16 @@ function duplicateTemplate(templateId) {
     duplicate.description = `${template.description} (نسخة)`;
     duplicate.isUserTemplate = true;
     duplicate.createdAt = new Date().toISOString();
+    
+    // Usage templates: just save the duplicate as-is (no categoryData)
+    if (duplicate.usageData) {
+        userTemplates.push(duplicate);
+        saveUserTemplates();
+        mergeUserTemplatesWithLibrary();
+        renderTemplates();
+        if (typeof showNotification === 'function') showNotification(`✅ تم نسخ "${template.name}"`, 'success', 2000);
+        return;
+    }
     
     // Generate new IDs for category data and preserve all values
     if (duplicate.categoryData) {
@@ -33600,6 +33629,72 @@ window.previewTemplate = function(templateId) {
         alert('❌ وظيفة المعاينة غير متوفرة');
     }
 };
+
+// Preview a usage template (custom modal for usageData)
+function previewUsageTemplate(template) {
+    const u = template.usageData;
+    const subUnitsHTML = u.subUnits && u.subUnits.length > 0
+        ? u.subUnits.map(s => `
+            <tr>
+                <td style="padding:10px 14px; color:white; font-size:14px;">${s.name}</td>
+                <td style="padding:10px 14px; color:rgba(255,255,255,0.8); text-align:center;">${s.percentage}%</td>
+                <td style="padding:10px 14px; color:rgba(255,255,255,0.8); text-align:center;">${s.efficiency}%</td>
+                <td style="padding:10px 14px; color:rgba(255,255,255,0.8); text-align:center;">${s.areaPerUnit} م²</td>
+            </tr>`).join('')
+        : `<tr><td colspan="4" style="padding:16px; text-align:center; color:rgba(255,255,255,0.4);">لا توجد وحدات فرعية</td></tr>`;
+
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+    modal.style.cssText = 'position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(8px);z-index:51000;display:flex;align-items:center;justify-content:center;padding:20px;';
+    modal.innerHTML = `
+        <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);border:1px solid rgba(255,255,255,0.1);border-radius:20px;max-width:700px;width:100%;max-height:90vh;overflow:hidden;">
+            <div style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:24px;border-radius:20px 20px 0 0;position:relative;">
+                <button onclick="this.closest('.modal-overlay').remove()" style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:none;color:white;width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:20px;">✕</button>
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <span style="font-size:48px;">${u.icon || '🏗️'}</span>
+                    <div>
+                        <h2 style="margin:0;font-size:22px;font-weight:700;color:white;">${template.name}</h2>
+                        <p style="margin:4px 0 0 0;font-size:13px;color:rgba(255,255,255,0.8);">${template.description || ''}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:24px;overflow-y:auto;max-height:calc(90vh-200px);">
+                <div style="display:flex;gap:16px;margin-bottom:20px;">
+                    <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+                        <div style="font-size:22px;font-weight:700;color:#667eea;">${u.efficiency}%</div>
+                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">كفاءة الاستخدام</div>
+                    </div>
+                    <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+                        <div style="font-size:22px;font-weight:700;color:#764ba2;">${u.subUnits ? u.subUnits.length : 0}</div>
+                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">وحدة فرعية</div>
+                    </div>
+                    <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
+                        <div style="font-size:22px;font-weight:700;color:#10b981;">${u.countInGLA ? 'نعم' : 'لا'}</div>
+                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">محسوب في GLA</div>
+                    </div>
+                </div>
+                ${u.subUnits && u.subUnits.length > 0 ? `
+                <h3 style="color:white;margin:0 0 12px 0;font-size:16px;">الوحدات الفرعية:</h3>
+                <div style="background:rgba(0,0,0,0.3);border-radius:12px;overflow:hidden;">
+                    <table style="width:100%;border-collapse:collapse;">
+                        <thead><tr style="background:rgba(255,255,255,0.05);">
+                            <th style="padding:10px 14px;text-align:right;color:rgba(255,255,255,0.6);font-size:12px;">اسم الوحدة</th>
+                            <th style="padding:10px 14px;text-align:center;color:rgba(255,255,255,0.6);font-size:12px;">النسبة</th>
+                            <th style="padding:10px 14px;text-align:center;color:rgba(255,255,255,0.6);font-size:12px;">الكفاءة</th>
+                            <th style="padding:10px 14px;text-align:center;color:rgba(255,255,255,0.6);font-size:12px;">مساحة/وحدة</th>
+                        </tr></thead>
+                        <tbody>${subUnitsHTML}</tbody>
+                    </table>
+                </div>` : ''}
+                <div style="margin-top:20px;">
+                    <button onclick="importTemplateToProject('${template.id}'); this.closest('.modal-overlay').remove();" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);border:none;padding:12px 24px;border-radius:10px;color:white;font-size:14px;font-weight:600;cursor:pointer;width:100%;">
+                        <i class="fas fa-plus-circle"></i> إضافة إلى المشروع
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    document.body.appendChild(modal);
+}
 
 // Import a usage template into the project's usesData
 function importUsageTemplate(template) {
