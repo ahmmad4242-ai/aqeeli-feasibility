@@ -31086,7 +31086,7 @@ async function showTemplatesLibrary() {
                 
                 <!-- Category Tabs -->
                 <div id="template-category-tabs" style="display: flex; gap: 8px; flex-wrap: wrap;">
-                    ${Object.entries(templatesLibrary.categories).map(([key, category]) => `
+                    ${Object.entries(templatesLibrary.categories).filter(([key, category]) => category.enabled).map(([key, category]) => `
                         <button 
                             onclick="switchTemplateCategory('${key}')"
                             id="tab-${key}"
