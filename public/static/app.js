@@ -31845,13 +31845,41 @@ function confirmSaveTemplate(categoryId) {
 function mergeUserTemplatesWithLibrary() {
     if (!templatesLibrary) return;
     
-    // Add user templates to cost category
+    // Route each user template to its correct category based on data type
+    const costUserTemplates   = userTemplates.filter(t => !t.usageData && !t.floorsData);
+    const usageUserTemplates  = userTemplates.filter(t => !!t.usageData);
+    const floorsUserTemplates = userTemplates.filter(t => !!t.floorsData);
+    
+    // ── Cost category ─────────────────────────────────────────────────────
     templatesLibrary.categories.cost.templates = [
-        ...userTemplates,
+        ...costUserTemplates,
         ...templatesLibrary.categories.cost.templates.filter(t => !t.isUserTemplate)
     ];
     
-    templatesLibrary.totalTemplates = templatesLibrary.categories.cost.templates.length;
+    // ── Usages category ───────────────────────────────────────────────────
+    if (!templatesLibrary.categories.usages) {
+        templatesLibrary.categories.usages = {
+            name: 'قوالب الاستخدامات',
+            nameEn: 'Usage Templates',
+            enabled: true,
+            templates: []
+        };
+    }
+    templatesLibrary.categories.usages.templates = [
+        ...usageUserTemplates,
+        ...templatesLibrary.categories.usages.templates.filter(t => !t.isUserTemplate)
+    ];
+    
+    // ── Floors category ───────────────────────────────────────────────────
+    if (templatesLibrary.categories.floors) {
+        templatesLibrary.categories.floors.templates = [
+            ...floorsUserTemplates,
+            ...templatesLibrary.categories.floors.templates.filter(t => !t.isUserTemplate)
+        ];
+    }
+    
+    templatesLibrary.totalTemplates = Object.values(templatesLibrary.categories)
+        .reduce((sum, cat) => sum + (cat.templates ? cat.templates.length : 0), 0);
 }
 
 // Delete template
