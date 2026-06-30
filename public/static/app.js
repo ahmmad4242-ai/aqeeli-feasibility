@@ -32843,9 +32843,15 @@ function importTemplateFromJSON() {
             // Check if this is a floors template
             const isFloorsTemplate = data.exportInfo?.exportType === 'floors' || data.floorsData;
             
+            // Check if this is a usage template
+            const isUsageTemplate = data.usageData !== undefined;
+            
             if (isFloorsTemplate) {
                 // Import floors template
                 importFloorsTemplateFromData(data, file.name);
+            } else if (isUsageTemplate) {
+                // Import usage template
+                importUsageTemplateFromData(data, file.name);
             } else {
                 // Import cost template (existing logic)
                 importCostTemplateFromData(data);
@@ -32858,6 +32864,53 @@ function importTemplateFromJSON() {
     };
     
     input.click();
+}
+
+// Import usage template from a JSON file
+function importUsageTemplateFromData(data, fileName) {
+    if (!data.usageData) {
+        throw new Error('Invalid usage template file structure');
+    }
+    
+    const templateId = `user_template_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+    const u = data.usageData;
+    const name = data.metadata?.templateName || u.name || fileName?.replace('.json','') || 'قالب استخدام مستورد';
+    
+    const template = {
+        id: templateId,
+        name: name,
+        nameEn: u.nameEn || '',
+        description: `قالب مستورد — ${u.subUnits ? u.subUnits.length : 0} وحدة فرعية`,
+        category: data.metadata?.category || u.name || 'استخدام',
+        icon: u.icon || '🏗️',
+        color: u.color || 'blue',
+        tags: data.metadata?.tags || [],
+        isCustom: true,
+        isUserTemplate: true,
+        isFavorite: false,
+        usageData: u,
+        createdAt: new Date().toISOString()
+    };
+    
+    userTemplates.push(template);
+    saveUserTemplates();
+    
+    // Switch to usages category and refresh
+    if (templatesLibrary) {
+        if (!templatesLibrary.categories.usages) {
+            templatesLibrary.categories.usages = { name: 'قوالب الاستخدامات', nameEn: 'Usage Templates', enabled: true, templates: [] };
+        }
+        templatesLibrary.categories.usages.templates.push(template);
+        currentTemplateCategory = 'usages';
+        renderTemplates();
+    }
+    
+    if (typeof showNotification === 'function') {
+        showNotification(`✅ تم استيراد "${name}" بنجاح`, 'success', 3000);
+    } else {
+        alert(`✅ تم استيراد قالب الاستخدام "${name}" بنجاح!`);
+    }
+    console.log(`✅ Imported usage template: ${name}`);
 }
 
 // Import cost template from data
@@ -33661,16 +33714,12 @@ function previewUsageTemplate(template) {
             <div style="padding:24px;overflow-y:auto;max-height:calc(90vh-200px);">
                 <div style="display:flex;gap:16px;margin-bottom:20px;">
                     <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
-                        <div style="font-size:22px;font-weight:700;color:#667eea;">${u.efficiency}%</div>
-                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">كفاءة الاستخدام</div>
-                    </div>
-                    <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
-                        <div style="font-size:22px;font-weight:700;color:#764ba2;">${u.subUnits ? u.subUnits.length : 0}</div>
+                        <div style="font-size:22px;font-weight:700;color:#667eea;">${u.subUnits ? u.subUnits.length : 0}</div>
                         <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">وحدة فرعية</div>
                     </div>
                     <div style="flex:1;background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;text-align:center;">
-                        <div style="font-size:22px;font-weight:700;color:#10b981;">${u.countInGLA ? 'نعم' : 'لا'}</div>
-                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">محسوب في GLA</div>
+                        <div style="font-size:22px;font-weight:700;color:#764ba2;">${template.category || u.nameEn || ''}</div>
+                        <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;">الفئة</div>
                     </div>
                 </div>
                 ${u.subUnits && u.subUnits.length > 0 ? `
