@@ -11237,7 +11237,7 @@ app.get('/', (c) => {
                     }
                     
                     // إذا لم يكن هناك تدفقات نقدية موجبة، فالمشروع غير مربح
-                    console.error(\`❌ لا توجد تدفقات نقدية موجبة - المشروع غير مربح\`);
+                    console.warn(\`⚠️ لا توجد تدفقات نقدية موجبة - المشروع غير مربح أو البيانات غير مكتملة\`);
                     investmentData.kpis.paybackPeriod = null; // غير قابل للحساب
                     return null;
                     
@@ -14893,8 +14893,17 @@ app.get('/', (c) => {
                         lng = 46.6753;
                     }
                     
-                    // إنشاء الخريطة
+                    // إنشاء الخريطة (مع منع التهيئة المزدوجة)
                     if (typeof L !== 'undefined') {
+                        // إذا كانت الخريطة مهيأة مسبقاً، فقط حدّث العرض
+                        if (window.mainMap && window.mainMap.getContainer) {
+                            try {
+                                window.mainMap.setView([lat, lng], 13);
+                                if (window.mainMarker) window.mainMarker.setLatLng([lat, lng]);
+                                console.log('🗺️ الخريطة محملة مسبقاً - تم تحديث العرض فقط');
+                            } catch(e) { /* تجاهل أخطاء التحديث */ }
+                            return;
+                        }
                         window.mainMap = L.map('map').setView([lat, lng], 13);
                         
                         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
