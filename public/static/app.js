@@ -33620,6 +33620,21 @@ function applyFloorsTemplate(templateId) {
         window.floorsData = floorsData;
         localStorage.setItem('floorsData', JSON.stringify(floorsData));
         
+        // ── تحديث معامل البناء المسموح إذا كان محدداً في القالب ──────────
+        if (template.allowedFAR !== undefined && template.allowedFAR !== null) {
+            const farField = document.getElementById('far');
+            if (farField) {
+                farField.value = template.allowedFAR;
+                farField.dispatchEvent(new Event('input', { bubbles: true }));
+                farField.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+            if (window.projectData) {
+                window.projectData.far = template.allowedFAR;
+            }
+            localStorage.setItem('projectFAR', template.allowedFAR);
+            console.log(`✅ معامل البناء المسموح محدّث: ${template.allowedFAR}`);
+        }
+        
         // Trigger recalculation through FloorsManagementSystem
         if (window.FloorsManagementSystem?.renderFloorsTable) {
             window.FloorsManagementSystem.renderFloorsTable();
