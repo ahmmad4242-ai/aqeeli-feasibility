@@ -1,5 +1,6 @@
 # deploy.ps1 — نشر التغييرات بنقرة واحدة
-Set-Location $PSScriptRoot
+$projectPath = if ($PSScriptRoot -and $PSScriptRoot -ne "") { $PSScriptRoot } else { "C:\aqeeli\webapp" }
+Set-Location $projectPath
 
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm"
 $defaultMsg = "update: $timestamp"

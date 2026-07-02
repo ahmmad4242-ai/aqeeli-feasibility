@@ -33655,8 +33655,25 @@ function applyFloorsTemplate(templateId) {
             recalculateCosts();
         }
         
+        // ── إعادة تطبيق FAR بعد الـ refresh (لضمان عدم الكتابة فوقه) ──────
+        if (template.allowedFAR !== undefined && template.allowedFAR !== null) {
+            const farFieldPost = document.getElementById('far');
+            if (farFieldPost) {
+                farFieldPost.value = template.allowedFAR;
+            }
+            if (window.projectData) {
+                window.projectData.far = template.allowedFAR;
+            }
+            const allowedFARDisplay = document.getElementById('allowedFARDisplay');
+            if (allowedFARDisplay) {
+                allowedFARDisplay.textContent = parseFloat(template.allowedFAR).toLocaleString('en-US');
+            }
+        }
+        
+        const totalApplied = floorsData.reduce((s, f) => s + (f.repeatCount || 1), 0);
+        const farMsg = template.allowedFAR !== undefined ? `\nمعامل البناء المسموح: ${template.allowedFAR}` : '';
         console.log(`✅ Applied floors template: ${template.name}`);
-        alert(`✅ تم تطبيق قالب "${template.name}" بنجاح!\n\n${floorsData.length} دور تمت إضافته إلى جدول الأدوار.`);
+        alert(`✅ تم تطبيق قالب "${template.name}" بنجاح!\n\n${totalApplied} دور تمت إضافته إلى جدول الأدوار.${farMsg}`);
         
         // Close modal if open
         const modal = document.querySelector('.modal-overlay');
